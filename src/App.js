@@ -20,7 +20,15 @@ class App extends Component {
   }
   componentDidMount() {
     console.log('componentDidMount');
-    //console.log(this.myDiv.getBoundingClientRect().height);
+    function getSafe(fn) {
+      try {
+        return fn();
+      } catch (e) {
+        return undefined;
+      }
+    }
+    console.log(getSafe(() => this.myDiv.getBoundingClientRect().height));
+    //console.log(this.myDiv.getBoundingClientRect() !== undefined);
   }
   handleClick = () => {
     this.setState({
